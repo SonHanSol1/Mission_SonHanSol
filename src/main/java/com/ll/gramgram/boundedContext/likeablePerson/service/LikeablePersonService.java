@@ -59,7 +59,7 @@ public class LikeablePersonService {
     public List<LikeablePerson> findByFromInstaMemberId(Long fromInstaMemberId) {
         return likeablePersonRepository.findByFromInstaMemberId(fromInstaMemberId);
     }
-    /*
+
 
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "entity not found")
@@ -69,7 +69,7 @@ public class LikeablePersonService {
             super(message);
         }
     }
-    public LikeablePerson getLikeaglePerson(Integer id) {
+    public LikeablePerson getLikeablePerson(Integer id) {
         Optional<LikeablePerson> likeablePerson = this.likeablePersonRepository.findById(id);
         if (likeablePerson.isPresent()) {
             return likeablePerson.get();
@@ -77,18 +77,8 @@ public class LikeablePersonService {
             throw new DataNotFoundException("question not found");
         }
     }
-//    public Question getQuestion(Integer id) {
-//        Optional<Question> question = this.questionRepository.findById(id);
-//        if (question.isPresent()) {
-//            return question.get();
-//        } else {
-//            throw new DataNotFoundException("question not found");
-//        }
-//    }
 
     public void Delete(LikeablePerson likeablePerson){
         this.likeablePersonRepository.delete(likeablePerson);
     }
-
-     */
 }

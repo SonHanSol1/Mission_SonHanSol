@@ -64,18 +64,12 @@ public class LikeablePersonController {
 
         return "usr/likeablePerson/list";
     }
-    /*
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/delete/{id}")
     public String likeablePersonDelete(@PathVariable("id") Integer id) {
-        LikeablePerson likeablePerson = this.likeablePersonService.getLikeaglePerson(id);
-//        if (!likeablePerson.getAuthor().getUsername().equals(principal.getName())) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
-//        }
-        this.likeablePersonService.Delete(likeablePerson);
-        //likeablePersonService.Delete(likeablePerson);
+        LikeablePerson likeablePerson = this.likeablePersonService.getLikeablePerson(id);
+        likeablePersonService.Delete(likeablePerson);
         return "redirect:/likeablePerson/list";
     }
-
-     */
 }
