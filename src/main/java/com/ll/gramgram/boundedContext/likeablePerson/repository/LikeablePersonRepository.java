@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LikeablePersonRepository extends JpaRepository<LikeablePerson, Integer> {
 
@@ -19,4 +20,6 @@ public interface LikeablePersonRepository extends JpaRepository<LikeablePerson, 
     @Query(value = "ALTER TABLE question AUTO_INCREMENT = 1", nativeQuery = true)
     void clearAutoIncrement();
     List<LikeablePerson> findByFromInstaMemberId(Long fromInstaMemberId);
+
+    Optional<LikeablePerson> findById(long id);
 }
