@@ -42,6 +42,13 @@
                     return;
                 }
 
+                // likeable_person 테이블의 본인 id와 상대 id와 같은 컬럼이 있으면 적용
+                if (form.username.value === myInstaMemberId) {
+                    toastWarning('호감을 표시한 인스타 게정입니다.');
+                    form.username.focus();
+                    return;
+                }
+
                 const $checkedAttractiveTypeCodeRadioButton = $(form).find("[name=attractiveTypeCode]:checked");
 
                 if ($checkedAttractiveTypeCodeRadioButton.length === 0) {
