@@ -12,7 +12,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -40,7 +43,22 @@ public class LikeablePerson extends BaseEntity {
 
     // 초 단위에서 올림 해주세요.
     public String getModifyUnlockDateRemainStrHuman() {
-        return "2시간 16분";
+        //System.out.println("시간표시"+AppConfig.genLikeablePerson() + "현재시각" + System.currentTimeMillis()+ "long"+ AppConfig.getLikeablePersonModifyCoolTime());
+        //LocalDateTime dateTime = modifyUnlockDate.minusMinutes(System.currentTimeMillis());
+
+
+        long dateTime = (AppConfig.genLikeablePersonModifyUnlockDateLong())-(System.currentTimeMillis());
+        long hour = dateTime / 3600;
+        long minute = dateTime % 3600 / 60;
+        String dateFormat = hour + " 시간 " + minute + " 분";
+
+        String dateFormatStringTime = dateFormat.format(dateFormat);
+
+//        SimpleDateFormat a= new SimpleDateFormat("HH시간 mm분");
+//        LocalDateTime genLikeablePerson = AppConfig.genLikeablePerson();
+//        System.out.println("남은 시간"+a.format(LocalDateTime.now().minusSeconds(AppConfig.getLikeablePersonModifyCoolTime())));
+//        return a.format(LocalDateTime.now().minusSeconds(AppConfig.getLikeablePersonModifyCoolTime()));
+        return dateFormat;
     }
 
     public RsData updateAttractionTypeCode(int attractiveTypeCode) {
