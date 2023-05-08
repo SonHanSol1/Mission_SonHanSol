@@ -34,11 +34,11 @@ public class LikeablePersonService {
 
         if (canLikeRsData.isFail()) return canLikeRsData;
 
-<<<<<<< HEAD
+
         if (canLikeRsData.getResultCode().equals("S-2")) return modifyAttractive(actor, username, attractiveTypeCode);
 
         InstaMember fromInstaMember = actor.getInstaMember();
-=======
+
         // 이미 추가한 호감상대
 //        for (LikeablePerson fromLikeablePerson : member.getInstaMember().getFromLikeablePeople()) {
 //            String toInstaMemberUsername = fromLikeablePerson.getToInstaMember().getUsername();
