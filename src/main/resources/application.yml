@@ -26,19 +26,19 @@ spring:
             redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
             client-authentication-method: POST
           google:
+            scope: profile
             client-name: Google
             redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
-            scope: profile
           facebook:
+            scope:
             client-name: Facebook
             redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
-            scope:
           instagram:
-            provider: instagram
             scope: user_profile,user_media
             client-name: Instagram
+            provider: instagram
             authorization-grant-type: authorization_code
-            redirect-uri: "${custom.site.baseUrl}/login/oauth2/code/{registrationId}"
+            redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
             client-authentication-method: client_secret_post
         provider:
           kakao:

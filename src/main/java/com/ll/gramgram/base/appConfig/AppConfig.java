@@ -27,11 +27,5 @@ public class AppConfig {
     public static LocalDateTime genLikeablePersonModifyUnlockDate() {
         return LocalDateTime.now().plusSeconds(likeablePersonModifyCoolTime);
     }
-
-    //genLikeablePersonModifyUnlockDate Long으로 표현
-    public static long genLikeablePersonModifyUnlockDateLong() {
-        long  conversion = System.currentTimeMillis()+(likeablePersonModifyCoolTime);
-        return conversion;
-    }
-
 }
+
