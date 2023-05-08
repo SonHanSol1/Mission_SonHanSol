@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,9 +34,46 @@ public class LikeablePersonService {
 
         if (canLikeRsData.isFail()) return canLikeRsData;
 
+<<<<<<< HEAD
         if (canLikeRsData.getResultCode().equals("S-2")) return modifyAttractive(actor, username, attractiveTypeCode);
 
         InstaMember fromInstaMember = actor.getInstaMember();
+=======
+        // 이미 추가한 호감상대
+//        for (LikeablePerson fromLikeablePerson : member.getInstaMember().getFromLikeablePeople()) {
+//            String toInstaMemberUsername = fromLikeablePerson.getToInstaMember().getUsername();
+//
+//            if (username.equals(toInstaMemberUsername)) {
+//                return RsData.of("F-1", "이미 추가한 호감상대 입니다.");
+//                //break;
+//            }
+//        }
+        // 이미 추가한 호감상대
+        LikeablePerson oldLikeablePerson = member.getInstaMember()
+                .getFromLikeablePeople()
+                .stream()
+                .filter(lp -> lp.getToInstaMember().getUsername().equals(username))
+                .findFirst()
+                .orElse(null);
+
+        if (oldLikeablePerson != null) {
+            System.out.println("기존 호감사유 : %s".formatted(oldLikeablePerson.getAttractiveTypeDisplayName()));
+            return RsData.of("F-1", "이미 추가한 호감상대 입니다.");
+        }
+        // 케이스6 구현 시도
+//      else if (attractiveTypeCode != oldLikeablePerson.getAttractiveTypeCode()) {
+//            LikeablePerson likeablePerson = LikeablePerson
+//                    .builder()
+//                    .attractiveTypeCode(attractiveTypeCode) // 1=외모, 2=능력, 3=성격
+//                    .build();
+//            likeablePersonRepository.save(likeablePerson); // 저장
+//            return RsData.of("S-1", "성격이 수정되었습니다");
+//        }
+
+
+
+        InstaMember fromInstaMember = member.getInstaMember();
+>>>>>>> main
         InstaMember toInstaMember = instaMemberService.findByUsernameOrCreate(username).getData();
 
         LikeablePerson likeablePerson = LikeablePerson
