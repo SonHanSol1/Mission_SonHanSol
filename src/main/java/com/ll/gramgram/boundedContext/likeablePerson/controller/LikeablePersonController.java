@@ -145,7 +145,7 @@ public class LikeablePersonController {
                 likeablePeopleStream = likeablePeopleStream
                         .filter(e -> e.getAttractiveTypeCode() == attractiveTypeCode);
             }
-
+/*
             //호감리스트 정렬
             switch (sortCode) {
                 case 1:
@@ -169,6 +169,7 @@ public class LikeablePersonController {
                     break;
 
             }
+ */
 
             List<LikeablePerson> likeablePeople = likeablePeopleStream.collect(Collectors.toList());
 
