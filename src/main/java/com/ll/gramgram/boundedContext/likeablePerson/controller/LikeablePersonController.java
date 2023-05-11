@@ -153,7 +153,8 @@ public class LikeablePersonController {
                             .sorted(Comparator.comparing(BaseEntity::getCreateDate));
                     break;
                 case 2:
-                    // likeablePeopleStream = likeablePeopleStream.sorted(??);
+                    likeablePeopleStream = likeablePeopleStream
+                            .sorted(Comparator.comparing(BaseEntity::getCreateDate).));
                     break;
                 case 3:
                     // likeablePeopleStream = likeablePeopleStream.sorted(??);
@@ -169,6 +170,8 @@ public class LikeablePersonController {
                     break;
 
             }
+
+
  */
 
             List<LikeablePerson> likeablePeople = likeablePeopleStream.collect(Collectors.toList());
