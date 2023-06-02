@@ -126,7 +126,7 @@ public class LikeablePersonController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/toList")
-    public String showToList(Model model, String gender, @RequestParam(defaultValue = "0") int attractiveTypeCode, @RequestParam(defaultValue = "1") int sortCode) {
+    public String showToList(Model model, @RequestParam(defaultValue = "") String gender, @RequestParam(defaultValue = "0") int attractiveTypeCode, @RequestParam(defaultValue = "1") int sortCode) {
         InstaMember instaMember = rq.getMember().getInstaMember();
 
         // 인스타인증을 했는지 체크
@@ -135,15 +135,16 @@ public class LikeablePersonController {
             Stream<LikeablePerson> likeablePeopleStream = instaMember.getToLikeablePeople().stream();
 
             //  성별 필터링기능 구현
-            if (gender != null) {
+            if (!gender.isEmpty()) {
                 likeablePeopleStream = likeablePeopleStream
-                        .filter(e -> e.getFromInstaMember().getGender().contains(gender));
+                        //.filter(likeablePerson -> likeablePerson.getFromInstaMember().getGender().contains(gender));
+                        .filter(likeablePerson -> likeablePerson.getFromInstaMember().getGender().equals(gender));
             }
 
             // 호감사유 필터링기능 구현
             if (attractiveTypeCode != 0) {
                 likeablePeopleStream = likeablePeopleStream
-                        .filter(e -> e.getAttractiveTypeCode() == attractiveTypeCode);
+                        .filter(likeablePerson -> likeablePerson.getAttractiveTypeCode() == attractiveTypeCode);
             }
 /*
             //호감리스트 정렬
